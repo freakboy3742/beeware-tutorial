@@ -171,53 +171,7 @@ During the `briefcase build android` step, Gradle (the Android platform build to
 
 We're now ready to run our application. You can use Briefcase's `run` command to run the app on an Android device. Let's start by running on an Android emulator.
 
-To run your application, run `briefcase run android`. When you do this, you'll be prompted with a list of devices that you could run the app on. The last item will always be an option to create a new Android emulator.
-
-/// tab | macOS
-
-```console
-(beeware-venv) $ briefcase run android
-
-Select device:
-
-  1) Create a new Android emulator
-
->
-```
-
-///
-
-/// tab | Linux
-
-```console
-(beeware-venv) $ briefcase run android
-
-Select device:
-
-  1) Create a new Android emulator
-
->
-```
-
-///
-
-/// tab | Windows
-
-```doscon
-(beeware-venv) C:\...>briefcase run android
-
-Select device:
-
-  1) Create a new Android emulator
-
->
-```
-
-///
-
-We can now choose our desired device. Select the "Create a new Android emulator" option, and accept the default choice for the device name (`beePhone`).
-
-Briefcase `run` will automatically boot the virtual device. When the device is booting, you will see the Android logo:
+To run your application, run `briefcase run android`. When you do this, Briefcase will create and boot a new virtual device. When the device is booting, you will see the Android logo:
 
 ![Android virtual device booting](../../images/android/tutorial-5-booting.png)
 
@@ -267,7 +221,33 @@ If you fail to see your app launching, you may need to check your terminal where
 
 While the app is running, you'll see a lot of messages being streamed in the console. This is a stream of the application's logs from the emulator. Typing Ctrl+C into the terminal will halt the streamed information in the console, but it will not close the emulator. This is so you can test new changes without restarting the emulator.
 
-In future, if you want to run on this device without using the menu, you can provide the emulator's name to Briefcase, using `briefcase run android -d "@beePhone"` to run on the virtual device directly.
+In future, if you want to create a different emulator (say, to test on a phone with different physical size, or to test with a different Android version), you can use `briefcase run android -d` to see a menu that will let you create a new emulator, or select an existing emulator.
+
+If you know ahead of time which emulator you want to target, you can tell Briefcase to use that emulator by providing a `-d` (or `--device`) option. Using the name of the device you selected when you created the emulator (e.g., `beePhone`), run:
+
+/// tab | macOS
+
+```console
+(beeware-venv) $ briefcase run android -d @beePhone
+```
+
+///
+
+/// tab | Linux
+
+```console
+(beeware-venv) $  briefcase run android -d @beePhone
+```
+
+///
+
+/// tab | Windows
+
+```doscon
+(beeware-venv) C:\...>briefcase run android -d @beePhone
+```
+
+///
 
 ## Run the app on a physical device
 
@@ -280,17 +260,17 @@ Android requires that you prepare your device before it can be used for developm
 
 Details on how to make these changes can be found [in the Android developer documentation](https://developer.android.com/studio/debug/dev-options#enable).
 
-Once these steps have been completed, your device should appear in the list of available devices when you run `briefcase run android`.
+Once these steps have been completed, your device should appear in the list of available devices when you run `briefcase run android -d`.
 
 /// tab | macOS
 
 ```console
-(beeware-venv) $ briefcase run android
+(beeware-venv) $ briefcase run android -d
 
 Select device:
 
   1) Pixel 3a (94ZZY0LNE8)
-  2) @beePhone (emulator)
+  2) @pixel_7-31 (emulator)
   3) Create a new Android emulator
 
 >
@@ -301,12 +281,12 @@ Select device:
 /// tab | Linux
 
 ```console
-(beeware-venv) $ briefcase run android
+(beeware-venv) $ briefcase run android -d
 
 Select device:
 
   1) Pixel 3a (94ZZY0LNE8)
-  2) @beePhone (emulator)
+  2) @pixel_7-31 (emulator)
   3) Create a new Android emulator
 
 >
@@ -317,12 +297,12 @@ Select device:
 /// tab | Windows
 
 ```doscon
-(beeware-venv) C:\...>briefcase run android
+(beeware-venv) C:\...>briefcase run android -d
 
 Select device:
 
   1) Pixel 3a (94ZZY0LNE8)
-  2) @beePhone (emulator)
+  2) @pixel_7-31 (emulator)
   3) Create a new Android emulator
 
 >
@@ -336,7 +316,7 @@ Here we can see a new physical device with it's serial number on the deployment 
 
 If your device doesn't appear on this list at all, either you haven't enabled USB debugging, (or the device isn't plugged in!).
 
-If your device appears, but is listed as "Unknown device (not authorized for development)", developer mode hasn't been correctly enabled. Re-run [the steps to enable developer options](https://developer.android.com/studio/debug/dev-options#enable), and re-run `briefcase run android`.
+If your device appears, but is listed as "Unknown device (not authorized for development)", developer mode hasn't been correctly enabled. Re-run [the steps to enable developer options](https://developer.android.com/studio/debug/dev-options#enable), and re-run `briefcase run android -d`.
 
 ///
 

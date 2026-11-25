@@ -48,36 +48,13 @@ Building... done
 [helloworld] Built build/helloworld/ios/xcode/build/Debug-iphonesimulator/Hello World.app
 ```
 
-We're now ready to run our application, using `briefcase run iOS`. You'll be prompted to select a device to compile for; if you've got simulators for multiple iOS SDK versions installed, you may also be asked which iOS version you want to target. The options you are shown may differ from the options show in this output - at the very least, the list of devices will likely be different. For our purposes, it doesn't matter which simulator you pick.
+We're now ready to run our application, using `briefcase run iOS`. This will start the iOS simulator, install your app, and start it.
 
 ```console
-(beeware-venv) $ briefcase run iOS
+Automatically selected iPhone 17e simulator on iOS 27.2
 
-Select simulator device:
-
-   1) iPad (10th generation)
-   2) iPad Air (5th generation)
-   3) iPad Pro (11-inch) (4th generation)
-   4) iPad Pro (12.9-inch) (6th generation)
-   5) iPad mini (6th generation)
-   6) iPhone 14
-   7) iPhone 14 Plus
-   8) iPhone 14 Pro
-   9) iPhone 14 Pro Max
-   10) iPhone SE (3rd generation)
-
->  10
-
-In the future, you could specify this device by running:
-
-    $ briefcase run iOS -d "iPhone SE (3rd generation)::iOS 16.2"
-
-or:
-
-    $ briefcase run iOS -d 2614A2DD-574F-4C1F-9F1E-478F32DE282E
-
-[helloworld] Starting app on an iPhone SE (3rd generation) running iOS 16.2 (device UDID 2614A2DD-574F-4C1F-9F1E-478F32DE282E)
-Booting simulator... done
+[helloworld] Starting app on an iPhone 17e simulator running iOS 27.2 (device UDID 5A720FFD-BA16-4FF3-9B51-CA8FC7717449)
+Device Hub has been started. You may need to select an iPhone 17e simulator running iOS 27.2 in the GUI.
 Opening simulator... done
 
 [helloworld] Installing app...
@@ -92,7 +69,7 @@ Launching app... done
 ...
 ```
 
-This will start the iOS simulator, install your app, and start it. You should see the simulator start, and eventually open your iOS application:
+You may need to select the device from the sidebar of the Xcode Device Hub; once you do, you should see your iOS application:
 
 ![Hello World Tutorial 5 window, on iOS](../../images/iOS/tutorial-5.png)
 
@@ -100,24 +77,26 @@ This will start the iOS simulator, install your app, and start it. You should se
 
 ///
 
-While the app is running, you'll see a series of Simulator log output messages in the console. Typing Ctrl+C into the terminal will halt the messages in the console, but it will not close the simulator. This is so you can test new changes without restarting the simulator.
+While the app is running, you'll see a series of Simulator log output messages in the console. Typing Ctrl+C into the terminal will halt the messages in the console, and terminate the app in the simulator.
+
+Briefcase will deploy to an "SE-class" device (e.g., an iPhone 17e) by default. If you want to test your app on a different type of device (e.g., an iPhone Pro, iPad, or iPhone Fold), you can run `briefcase run iOS -d`. This will display a menu that allows you to select the type of device to simulate; if you've got simulators for multiple iOS SDK versions installed, you will also be asked which iOS version you want to target.
 
 If you know ahead of time which iOS simulator you want to target, you can tell Briefcase to use that simulator by providing a `-d` (or `--device`) option. Using the name of the device you selected when you built your application, run:
 
 ```console
-$ briefcase run iOS -d "iPhone SE (3rd generation)"
+(beeware-venv) $ briefcase run iOS -d "iPhone SE (3rd generation)"
 ```
 
 If you have multiple iOS versions available, Briefcase will pick the highest iOS version; if you want to pick a particular iOS version, you tell it to use that specific version:
 
 ```console
-$ briefcase run iOS -d "iPhone SE (3rd generation)::iOS 15.5"
+(beeware-venv) $ briefcase run iOS -d "iPhone SE (3rd generation)::iOS 15.5"
 ```
 
 Or, you can name a specific device UDID:
 
 ```console
-$ briefcase run iOS -d 2614A2DD-574F-4C1F-9F1E-478F32DE282E
+(beeware-venv) $ briefcase run iOS -d 2614A2DD-574F-4C1F-9F1E-478F32DE282E
 ```
 
 ## Next steps
