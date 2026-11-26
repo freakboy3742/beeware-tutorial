@@ -223,12 +223,12 @@ While the app is running, you'll see a lot of messages being streamed in the con
 
 In future, if you want to create a different emulator (say, to test on a phone with different physical size, or to test with a different Android version), you can use `briefcase run android -d` to see a menu that will let you create a new emulator, or select an existing emulator.
 
-If you know ahead of time which emulator you want to target, you can tell Briefcase to use that emulator by providing a `-d` (or `--device`) option. Using the name of the device you selected when you created the emulator (e.g., `beePhone`), run:
+If you know ahead of time which emulator you want to target, you can tell Briefcase to use that emulator by providing a `-d` (or `--device`) option. Using the name of the device you selected when you created the emulator (e.g., `beePhone-31`), run:
 
 /// tab | macOS
 
 ```console
-(beeware-venv) $ briefcase run android -d @beePhone
+(beeware-venv) $ briefcase run android -d @beePhone-31
 ```
 
 ///
@@ -236,7 +236,7 @@ If you know ahead of time which emulator you want to target, you can tell Briefc
 /// tab | Linux
 
 ```console
-(beeware-venv) $  briefcase run android -d @beePhone
+(beeware-venv) $  briefcase run android -d @beePhone-31
 ```
 
 ///
@@ -244,7 +244,7 @@ If you know ahead of time which emulator you want to target, you can tell Briefc
 /// tab | Windows
 
 ```doscon
-(beeware-venv) C:\...>briefcase run android -d @beePhone
+(beeware-venv) C:\...>briefcase run android -d @beePhone-31
 ```
 
 ///
@@ -270,7 +270,7 @@ Once these steps have been completed, your device should appear in the list of a
 Select device:
 
   1) Pixel 3a (94ZZY0LNE8)
-  2) @pixel_7-31 (emulator)
+  2) @beePhone-31 (emulator)
   3) Create a new Android emulator
 
 >
@@ -286,7 +286,7 @@ Select device:
 Select device:
 
   1) Pixel 3a (94ZZY0LNE8)
-  2) @pixel_7-31 (emulator)
+  2) @beePhone-31 (emulator)
   3) Create a new Android emulator
 
 >
@@ -302,7 +302,7 @@ Select device:
 Select device:
 
   1) Pixel 3a (94ZZY0LNE8)
-  2) @pixel_7-31 (emulator)
+  2) @beePhone-31 (emulator)
   3) Create a new Android emulator
 
 >
